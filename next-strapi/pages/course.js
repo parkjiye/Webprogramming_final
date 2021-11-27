@@ -9,7 +9,7 @@ import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
 
-export default function Home({list}) {
+export default function Page({list}) {
   return (
     <div>
       <Head>
