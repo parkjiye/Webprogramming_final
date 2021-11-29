@@ -18,7 +18,7 @@ export default function Page({list}) {
 
       <NavigationBar></NavigationBar>
 
-	  <img className={styles.banner} src="/webprogramming_banner4.png" alt="Chicago"/>
+	  <img className={styles.banner} src="/webprogramming_banner4.png"/>
       
       <div className={styles.login} class="container-fluid">
 		<div class="container">
@@ -91,31 +91,6 @@ export default function Page({list}) {
 		*/}
 	</div>
       <Footer></Footer>
-      
-      {/*
-      <h1>Welcome home!</h1>
-      <ul className="list-group">
-        {list.map((item) => (
-          <li key={item.id}>
-            <Link href={`/article/${item.id}`}>
-              <a>{item.Title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-        */}
     </div>
   )
 }
-
-export const getStaticProps = async () => {
-  const data = await fetch(`${url}/articles`);
-  const list = await data.json();
-
-  return {
-    props: {
-      list,
-    },
-    revalidate: 1, 
-  };
-};
