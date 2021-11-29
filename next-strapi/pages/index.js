@@ -18,13 +18,13 @@ export default function Home({list}) {
 
       <NavigationBar></NavigationBar>
       <MainBanner></MainBanner>
-
+      <br></br>
       <CourseCard></CourseCard>
       <Footer></Footer>
       
       {/*
       <h1>Welcome home!</h1>
-      <ul className="list-group">
+      <ul>
         {list.map((item) => (
           <li key={item.id}>
             <Link href={`/article/${item.id}`}>

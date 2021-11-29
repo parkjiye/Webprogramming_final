@@ -17,7 +17,11 @@ export default function Page({list}) {
       </Head>
 
       <NavigationBar></NavigationBar>
-      <MainBanner></MainBanner>
+      
+      <div className={styles.header}>
+        <h1>SKKULEARN</h1>
+        <p>LEARN and TEACH everything you want!</p>
+      </div>
 
       <CourseCard></CourseCard>
       <Footer></Footer>
