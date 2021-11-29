@@ -9,7 +9,7 @@ import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
 
-export default function Home({list}) {
+export default function Page({list}) {
   return (
     <div>
       <Head>
@@ -17,14 +17,18 @@ export default function Home({list}) {
       </Head>
 
       <NavigationBar></NavigationBar>
-      <MainBanner></MainBanner>
-      <br></br>
+      
+      <div className={styles.header}>
+        <h1>SKKULEARN</h1>
+        <p>LEARN and TEACH everything you want!</p>
+      </div>
+
       <CourseCard></CourseCard>
       <Footer></Footer>
       
       {/*
       <h1>Welcome home!</h1>
-      <ul>
+      <ul className="list-group">
         {list.map((item) => (
           <li key={item.id}>
             <Link href={`/article/${item.id}`}>
