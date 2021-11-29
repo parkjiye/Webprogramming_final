@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "courses",
   "info": {
-    "name": "course"
+    "name": "Course",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -15,15 +16,22 @@
       "type": "string"
     },
     "about": {
-      "type": "text"
+      "type": "richtext"
     },
-    "course": {
-      "model": "course"
+    "lectures": {
+      "via": "course",
+      "collection": "lecture",
+      "dominant": true
     },
     "level": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "normal",
+        "hard"
+      ]
     },
-    "image": {
+    "logo_img": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -34,10 +42,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "lectures": {
-      "via": "course",
-      "collection": "lecture"
     }
   }
 }
