@@ -47,12 +47,12 @@ export default function Page({list}) {
 								<div class="form-group">
 								<input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Password2"/>
 							</div>
-							{/*<div class="form-check">
+							<div class="form-check">
 								<label class="form-check-label">
 								  <input type="checkbox" class="form-check-input"/>
-								  By Clicking register you're agree to our policy & terms
+								  Check if you want to sign up as a tutor.
 								</label>
-  </div>*/}
+  							</div>
  							<div>
  									  <input type="submit" class="btn btn-lg btn-primary"   value="Register"/>
  							</div>

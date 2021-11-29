@@ -21,19 +21,7 @@ export default function Home({ courses, titles, lectures }) {
       <br></br>
       <CourseCard courses={courses}></CourseCard>
       <Footer></Footer>
-      
-      {/*
-      <h1>Welcome home!</h1>
-      <ul>
-        {list.map((item) => (
-          <li key={item.id}>
-            <Link href={`/article/${item.id}`}>
-              <a>{item.Title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-        */}
+
     </div>
   )
 }
