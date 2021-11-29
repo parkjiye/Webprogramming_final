@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lectures",
+  "info": {
+    "name": "lecture"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "about": {
+      "type": "text"
+    },
+    "video_link": {
+      "type": "string"
+    },
+    "course": {
+      "model": "course",
+      "via": "lectures"
+    }
+  }
+}
