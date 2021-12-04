@@ -14,23 +14,45 @@ export default function Page({list, auth}) {
 	const signUp = async event => {
 		event.preventDefault();
 		console.log(event.target.signup_email.value);
-		signupEmail(event.target.signup_email.value, event.target.signup_password.value)
+		if(event.target.signup_password.value != event.target.signup_password_confirm.value) {
+			alert("Password and Confirm password are different.");
+			event.target.username.value = "";
+			event.target.signup_email.value = "";
+			event.target.signup_email.value = "";
+			event.target.signup_email_confirm.value = "";
+		}
+		signupEmail(event.target.signup_email.value, event.target.signup_email.value)
 		.then((result) => {
 			const user = result.user;
-			loginSuccess(user.email, user.uid);
-		  })
-		  .catch((error) => console.log(error));
+			alert("Success Registration!");
+			event.target.username.value = "";
+			event.target.signup_email.value = "";
+			event.target.signup_email.value = "";
+			event.target.signup_email_confirm.value = "";
+		})
+		.catch((error) => console.log(error));
 	}
 
 	const login = async event => {
+		event.preventDefault();
+		console.log(event.target.login_email.value);
 		loginEmail(event.target.login_email.value, event.target.login_password.value)
 		.then((result) => {
 			console.log(result);
 			const user = result.user;
-			loginSuccess(user.email, user.uid);
+			alert("Success Login!");
+			event.target.login_email.value = "";
+			event.target.login_password.value = "";
+		})
+		.catch((result) => {
+			console.log("wrong!!!");
+			alert("Wrong! Put correct email and password.");
+			event.target.login_email.value = "";
+			event.target.login_password.value = "";
 		});
 	}
-	
+
+
 	return (
 		<div>
 		<Head>
@@ -52,11 +74,11 @@ export default function Page({list, auth}) {
 				
 				<div class="row">
 					<div class="col-md-5">
-						<form onSubmit={signUp} name="signup_form" role="form">
+						<form onSubmit={signUp} name="signup_form">
 							<fieldset>							
-								<p class="text-uppercase pull-center"> SIGN UP.</p>	
+								<p class="text-uppercase pull-center">SIGN UP</p>	
 								<div class="form-group">
-									<input type="text" name="username" id="username" class="form-control input-lg" placeholder="username"/>
+									<input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username"/>
 								</div>
 
 								<div class="form-group">
@@ -66,16 +88,10 @@ export default function Page({list, auth}) {
 									<input type="password" name="signup_password" id="signup_password" class="form-control input-lg" placeholder="Password"/>
 								</div>
 									<div class="form-group">
-									<input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Password2"/>
-								</div>
-								<div class="form-check">
-									<label class="form-check-label">
-									<input type="checkbox" class="form-check-input"/>
-									Check if you want to sign up as a tutor.
-									</label>
+									<input type="password" name="signup_password_confirm" id="signup_password_confirm" class="form-control input-lg" placeholder="Confirm Password"/>
 								</div>
 								<div>
-									<button type="submit" class="btn btn-lg btn-primary" placeholder="Register"/>
+									<button type="submit" class="btn btn-md btn-primary">Register</button>
 								</div>
 							</fieldset>
 						</form>
@@ -86,20 +102,18 @@ export default function Page({list, auth}) {
 					</div>
 					
 					<div class="col-md-5">
-						<form onSubmit={login} name="signup_form" role="form">
+						<form onSubmit={login} name="login_form">
 							<fieldset>							
-								<p class="text-uppercase"> Login using your account: </p>	
-									
+								<p class="text-uppercase"> Login </p>	
 								<div class="form-group">
-									<input type="email" name="login_email" id="login_email" class="form-control input-lg" placeholder="username"/>
+									<input type="email" name="login_email" id="login_email" class="form-control input-lg" placeholder="Email"/>
 								</div>
 								<div class="form-group">
 									<input type="password" name="login_password" id="login_password" class="form-control input-lg" placeholder="Password"/>
 								</div>
 								<div>
-									<input type="submit" class="btn btn-md" value="Sign In"/>
-								</div>
-									
+									<button type="submit" class="btn btn-md btn-primary">Login</button>
+								</div>									
 							</fieldset>
 						</form>	
 					</div>
