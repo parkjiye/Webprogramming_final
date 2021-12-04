@@ -11,7 +11,7 @@ import { Footer } from '../components/Footer';
 
 export default function Home({ courses, titles, lectures }) {
   return (
-    <div>
+    <div className={styles.main}>
       <Head>
         <title>Home</title>
       </Head>

@@ -22,6 +22,9 @@ export default function Home({ courses, course, titles }) {
         <h1 class="display-4 fw-bold">{course.lectures[0].title}</h1>
             <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">{course.lectures[0].about}</p>
+                <video style={{ width: '500px', height: '500px' }}>
+                  <source src="/python.mp4" />
+                </video>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                     <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Register</button>
                     <button type="button" class="btn btn-outline-secondary btn-lg px-4">Go to Class</button>
