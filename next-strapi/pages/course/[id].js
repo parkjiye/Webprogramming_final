@@ -13,20 +13,24 @@ import { Footer } from '../../components/Footer';
 export default function Home({ courses, course, titles }) {
   let i=1;
   const list =() =>(
-    <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div>
       {course.lectures.map((element, index) => {
         return(
-          <div>
-            <Link href={"/lecture/" + (element.id==undefined?'landing':element.id)}><div class="ms-2 me-auto">
-          <div class="fw-bold">{i++ + ". " + element.title}</div>
-          {element.about}
-          </div></Link>
-          <span class="badge bg-primary rounded-pill">{element.video_time}</span>
-          </div>
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <Link href={"/lecture/" + (element.id==undefined?'landing':element.id)}>
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{i++ + ". " + element.title}</div>
+                  {element.about}
+                </div>
+              </Link>
+          
+            </div>
+          </li>
         )
       })}                
                         
-    </li>
+    </div>
   );
 
   return (
