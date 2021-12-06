@@ -8,8 +8,17 @@ import { NavigationBar } from '../components/NavigationBar';
 import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
+import { user } from '../user';
 
 export default function Home({ courses, titles, lectures }) {
+  // if(user.email == '') {
+  //   console.log("no user!");
+  // }
+  // else {
+  //   console.log(user.email);
+  // }
+  console.log(user);
+  
   return (
     <div className={styles.main}>
       <Head>

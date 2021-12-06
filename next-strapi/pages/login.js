@@ -8,7 +8,8 @@ import { NavigationBar } from '../components/NavigationBar';
 import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
-import { loginEmail, signupEmail } from './firebase.js';
+import { loginEmail, signupEmail } from './firebase';
+import { user } from '../user';
 
 export default function Page({list, auth}) {
 	const signUp = async event => {
@@ -23,7 +24,7 @@ export default function Page({list, auth}) {
 		}
 		signupEmail(event.target.signup_email.value, event.target.signup_email.value)
 		.then((result) => {
-			const user = result.user;
+			user = result.user;
 			alert("Success Registration!");
 			event.target.username.value = "";
 			event.target.signup_email.value = "";
@@ -38,8 +39,9 @@ export default function Page({list, auth}) {
 		console.log(event.target.login_email.value);
 		loginEmail(event.target.login_email.value, event.target.login_password.value)
 		.then((result) => {
-			console.log(result);
-			const user = result.user;
+			console.log(result.user);
+			user = result.user;
+			console.log(user);
 			alert("Success Login!");
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
