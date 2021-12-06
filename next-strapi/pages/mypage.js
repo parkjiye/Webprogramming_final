@@ -9,6 +9,25 @@ import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
 
+{/*
+    local storage에 저장된 유저 정보로 firebase에서 수강한 강좌 제목만 가져오기(화)
+   course strapi에서 map 할 때 제목 있는 강좌만 가져와서 보여주기(수)
+
+   ****************************
+
+   강좌 Register 누르면 firebase에 강좌 추가해주기 -> 이미 있는거면 경고 메시지(금~토요일) -> 채연
+   
+   ****************************
+
+   footer 완성하기(금)
+   strapi 강좌 데이터 정리하기(금, 토요일)
+
+   ****************************
+
+   보고서 쓰기(토요일, 일요일) -> 같이
+   영상 찍기(일요일 새벽) -> 같이
+
+*/}
 export default function Page({courses, titles, lectures}) {
   const getusername=()=>{
     let username="";

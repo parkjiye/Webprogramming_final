@@ -2,8 +2,20 @@ import styles from '../styles/Home.module.css'
 
 
 export const NavigationBar=(props)=>{
-    return(
-        <div className={styles.navigationbar}>
+    const getusername=()=>{
+        let username="";
+        let mode="Login / Signup";
+        if (typeof window !== "undefined") {
+          username=localStorage.getItem("user");
+        }
+        if(username!=""){
+            mode="Logout";
+        }
+        else{
+            mode="Login / Signup";
+        }
+        return(
+            <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                 <a class="navbar-brand" href="/">SKKULEARN</a>
@@ -13,7 +25,7 @@ export const NavigationBar=(props)=>{
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Login / Signup</a>
+                        <a class="nav-link" href="/login">{mode}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="/course" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,8 +40,21 @@ export const NavigationBar=(props)=>{
                     </li>
                     </ul>
                 </div>
+                <div className={styles.navigationbar}>
+                    <h1>{username}</h1>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/mypage">My Courses</a>
+                        </li>
+                    </ul>
+                </div>
                 </div>
             </nav>
         </div>
+          
+        )
+    }
+    return(
+        getusername()
     );
 };

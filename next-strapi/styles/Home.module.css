@@ -2,11 +2,28 @@
   padding: 0 2rem;
 }
 
-.main {
- 
+.welcome{
+  text-align: center;
+  margin-bottom:30px;
+  font-family: 'Lobster', cursive;
+
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+.navigationbar h1{
+  font-size: 20px;
+  font-family: 'Lobster', cursive;
+  margin-top:8px;
+  margin-right:10px;
+  vertical-align: center;
+
+}
+
+.navigationbar{
+  display:flex;
+  flex-direction: row;
+}
 
 .header{
   padding: 60px;
@@ -124,3 +141,7 @@
     flex-direction: column;
   }
 }
+
+
+
+

@@ -18,7 +18,8 @@
     "react-markdown": "^7.1.0",
     "react-router-dom": "^6.0.2",
     "react-video": "^1.5.3",
-    "react-youtube": "^7.13.1"
+    "react-youtube": "^7.13.1",
+    "state-pool": "^0.6.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",

@@ -3,6 +3,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { url } from '../config/next.config'
 import Link from "next/link";
+import Router from 'next/router';
+import { useEffect } from 'react';
 
 import { NavigationBar } from '../components/NavigationBar';
 import { MainBanner } from '../components/MainBanner';
@@ -10,6 +12,8 @@ import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
 import { loginEmail, signupEmail } from './firebase';
 import { user } from '../user';
+//import { Router } from 'react-router';
+
 
 export default function Page({list, auth}) {
 	const signUp = async event => {
@@ -45,10 +49,16 @@ export default function Page({list, auth}) {
 			alert("Success Login!");
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
+			Router.push('/course');
 		})
 		.catch((result) => {
 			console.log("wrong!!!");
 			alert("Wrong! Put correct email and password.");
+			
+			Router.push('/course');
+			if (typeof window !== "undefined") {
+				localStorage.setItem("user", event.target.login_email.value);
+			}
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
 		});
