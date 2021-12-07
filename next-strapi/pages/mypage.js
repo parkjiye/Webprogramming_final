@@ -3,11 +3,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { url } from '../config/next.config'
 import Link from "next/link";
+import { fire } from './firebase';
 
 import { NavigationBar } from '../components/NavigationBar';
 import { MainBanner } from '../components/MainBanner';
 import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
+import { Mycoursecard } from '../components/Mycoursecard';
 
 {/*
     local storage에 저장된 유저 정보로 firebase에서 수강한 강좌 제목만 가져오기(화)
@@ -28,7 +30,9 @@ import { Footer } from '../components/Footer';
    영상 찍기(일요일 새벽) -> 같이
 
 */}
+
 export default function Page({courses, titles, lectures}) {
+
   const getusername=()=>{
     let username="";
     if (typeof window !== "undefined") {
@@ -40,17 +44,17 @@ export default function Page({courses, titles, lectures}) {
       </div>
     )
   }
+  fire()
   return (
     <div>
       <Head>
         <title>Home</title>
       </Head>
-      
       <NavigationBar></NavigationBar>
       
       <img className={styles.banner} src="/webprogramming_banner4.png"/>
       {getusername()}
-      <CourseCard courses={courses}></CourseCard>
+      <Mycoursecard courses={courses}></Mycoursecard>
       <Footer></Footer>
 
     </div>
