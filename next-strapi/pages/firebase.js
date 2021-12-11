@@ -4,9 +4,9 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { 
-    getAuth,// authentication 설정
-    signInWithEmailAndPassword,// email 로그인
-    createUserWithEmailAndPassword, //email 회원가입
+    getAuth,// authentication
+    signInWithEmailAndPassword,// email login
+    createUserWithEmailAndPassword, //email sign up
 } from "firebase/auth";
 
 import { getDatabase, ref, set, child, get, update } from "firebase/database"
@@ -26,41 +26,48 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// auth 설정
+// set auth
 const auth = getAuth();
 
-//Email 로그인
+//Email login function
 export const signupEmail = (email, password) => {
+  //initialize the course item as "dfdf"
   if(typeof window !== "undefined"){
     localStorage.setItem("course", "dfdf");
   }
+  //return the result of the login
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
-//Email 회원가입
+//Email signup
 export const loginEmail = (email, password) => {
+  //initialize the course item as "dfdf"
   if(typeof window !== "undefined"){
     localStorage.setItem("course", "dfdf");
   }
+  //return the result of the login
   return signInWithEmailAndPassword(auth, email, password);
 };
 
+// Course(title) register function
 export const register=(title)=>{
   var database=getDatabase(app);
-    //database.ref('test/').set({"name": "테스트2", "intro": "인삿말"})
   if(typeof window !== "undefined"){
+    //get current login user email from localstorage and substring it before '@'
     var user=localStorage.getItem("user");
     var result=user.substring(0,user.lastIndexOf("@"));
+
+    //if the course local storage is initial state, set the title of course of the user on the firebase
     if(localStorage.getItem("course")=="dfdf"){
       localStorage.removeItem("course");
       update(ref(database, `users/${result}`),{
         course: [title],
       });
     }
+    //if the course local storage is not initial state, update the course list with new course on the firebase
     else{
       var arr=JSON.parse(localStorage.getItem("course"));
       arr[arr.length]=title;
-      //var result2=user.substring(result);
       update(ref(database, `users/${result}`),{
       course:arr,
     });
@@ -68,23 +75,23 @@ export const register=(title)=>{
   }
 }
 
+//get the courses which user has registered
 export const fire=()=>{
-  var database=getDatabase(app);
-    //database.ref('test/').set({"name": "테스트2", "intro": "인삿말"})
     if(typeof window !== "undefined"){
+      //get current login user email from localstorage and substring it before '@'
       var user=localStorage.getItem("user");
       var result=user.substring(0,user.lastIndexOf("@"));
+
+      //get the course list of user which is saved on the firebase
       const dbRef=ref(getDatabase());
       get(child(dbRef, `users/${result}`)).then((snapshot)=>{
         if(snapshot.exists()){
           localStorage.setItem("course", JSON.stringify(snapshot.val().course));
         }else{
-          console.log('nono');
+          //console.log('nono');
         }
       }).catch((error)=>{
         console.error(error);
       })
     }
-    
-    //console.log("firebase");
 }

@@ -1,68 +1,68 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { url } from '../config/next.config'
-import Link from "next/link";
 import Router from 'next/router';
-import { useEffect } from 'react';
 
 import { NavigationBar } from '../components/NavigationBar';
-import { MainBanner } from '../components/MainBanner';
-import { CourseCard } from '../components/CourseCard';
 import { Footer } from '../components/Footer';
 import { loginEmail, signupEmail } from './firebase';
 import { user } from '../user';
-//import { Router } from 'react-router';
-
 
 export default function Page({list, auth}) {
+	//signup function
 	const signUp = async event => {
 		event.preventDefault();
 		console.log(event.target.signup_email.value);
+		//if password value and confrim password value are different, show alert message
 		if(event.target.signup_password.value != event.target.signup_password_confirm.value) {
 			alert("Password and Confirm password are different.");
+			//clean up the input values
 			event.target.username.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email_confirm.value = "";
 		}
+		//if the signup is successful, 
 		signupEmail(event.target.signup_email.value, event.target.signup_password.value)
 		.then((result) => {
+			//change the screen to course page
 			Router.push('/course');
+			//set the user of localstorage to the signup_email value
 			if (typeof window !== "undefined") {
 				localStorage.setItem("user", event.target.signup_email.value);
 			}
 			user = result.user;
+			//clean up the input values
 			event.target.username.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email_confirm.value = "";
-			
 		})
-
+		//if the signup is not successful,
 		.catch((error) => console.log(error));
 	}
 
 	const login = async event => {
 		event.preventDefault();
-		console.log(event.target.login_email.value);
+		//if the login is successful,
 		loginEmail(event.target.login_email.value, event.target.login_password.value)
 		.then((result) => {
+			//change the screen to course page
 			Router.push('/course');
+			//set the user of localstorage to the login_email value
 			if (typeof window !== "undefined") {
 				localStorage.setItem("user", event.target.login_email.value);
 			}
-
-			console.log(result.user);
 			user = result.user;
-			console.log(user);
+			//clean up the input values
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
 			
 		})
+		//if the login is not successful,
 		.catch((error) => {
-			console.log("wrong!!!");
+			//show the alert message
 			alert("Wrong! Put correct email and password.");
+			//clean up the input values
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
 		});
@@ -77,17 +77,14 @@ export default function Page({list, auth}) {
 
 		<NavigationBar></NavigationBar>
 
-		<img className={styles.banner} src="/webprogramming_banner4.png"/>
-		
+		<img className={styles.banner} src="/webprogramming_banner.png"/>
 		<div className={styles.login} class="container-fluid">
 			<div class="container">
 				<h2 class="text-center" id="title">Welcome to SKKULEARN</h2>
 				<p class="text-center">
 					<small id="passwordHelpInline" class="text-muted"> Enjoy our page by signing up! </small>
 				</p>
-
 				<hr></hr>
-				
 				<div class="row">
 					<div class="col-md-5">
 						<form onSubmit={signUp} name="signup_form">
@@ -116,9 +113,7 @@ export default function Page({list, auth}) {
 						</form>
 					</div>
 					
-					<div class="col-md-2">
-						
-					</div>
+					<div class="col-md-2"></div>
 					
 					<div class="col-md-5">
 						<form onSubmit={login} name="login_form">

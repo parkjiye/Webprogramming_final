@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 
 
-export const MainBanner=(props)=>{
+export const MainBanner=()=>{
     return(
         <div className={styles.mainbanner} id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">

@@ -1,20 +1,20 @@
 import styles from '../styles/Home.module.css'
 
 
-export const NavigationBar=(props)=>{
-    const check=()=>{
-        
-    }
+export const NavigationBar=()=>{
+    //if the state is login, show "user name" on the navigation bar
     const getusername=()=>{
         let username="";
         let mode="Login / Signup";
         if (typeof window !== "undefined") {
           username=localStorage.getItem("user");
         }
-        console.log(username);
+        
+        //if user is not login, show the mode to the login/signup
         if(username==undefined){
             mode="Login / Signup";
         }
+        //if user is login, show the mode to the logout
         else{
             mode="Logout";
         }
@@ -35,12 +35,6 @@ export const NavigationBar=(props)=>{
                         <a class="nav-link dropdown-toggle" href="/course" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Courses
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/course">All</a></li>
-                            <li><a class="dropdown-item" href="#">Python</a></li>
-                            <li><a class="dropdown-item" href="#">Java</a></li>
-                            <li><a class="dropdown-item" href="#">Web Programming</a></li>
-                        </ul>
                     </li>
                     </ul>
                 </div>

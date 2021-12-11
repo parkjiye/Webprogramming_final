@@ -1,23 +1,25 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { url } from '../config/next.config'
 
-export const Mycoursecard=(props)=>{ // props = (id, title, about, level)
-    
+//show the course card which user has registered
+export const Mycoursecard=(props)=>{
+    //props ==> course list the course.js & index.js sent
     const card=()=>(
-        
+        //map each item of course list to the card
         <div className={styles.coursecard} class="row row-cols-1 row-cols-md-3 g-4">
-            
             {props.courses.map((element, index)=>{
                 if(typeof window !== "undefined"){
+                    //get course list from the localstorage and parse it to JSON
                     var output=localStorage.getItem("course");
-                    console.log(localStorage.getItem("course"));
                     var arr=JSON.parse(output);
-                    //console.log(arr[0]);
+                    
                     for(var i=0; i<arr.length;i++){
+                        
                         if(arr[i]==null){
                             continue;
                         }
+                        //if the course name of the course list from firebase and course name of the course list from local storage is same,
+                        //show it to the card
                         if(arr[i]==element.title){
                             let name="/webprogramming_banner"+(element.id)+".png"
                             return(

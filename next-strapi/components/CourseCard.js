@@ -1,14 +1,12 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { url } from '../config/next.config'
 
-export const CourseCard=(props)=>{ // props = (id, title, about, level)
-    
+export const CourseCard=(props)=>{
+    //props ==> course list the course.js & index.js sent
     const card=()=>(
+        //map each item of course list to the card
         <div className={styles.coursecard} class="row row-cols-1 row-cols-md-3 g-4">
-            
             {props.courses.map((element, index)=>{
-                let i=1;
                 let name="/webprogramming_banner"+(element.id)+".png"
                 return(
                     <div class="col">
@@ -24,7 +22,7 @@ export const CourseCard=(props)=>{ // props = (id, title, about, level)
             })}
         </div>
     );
-    let i=0;
+
     return(
         card()
     );
