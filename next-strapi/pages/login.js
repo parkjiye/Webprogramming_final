@@ -26,15 +26,20 @@ export default function Page({list, auth}) {
 			event.target.signup_email.value = "";
 			event.target.signup_email_confirm.value = "";
 		}
-		signupEmail(event.target.signup_email.value, event.target.signup_email.value)
+		signupEmail(event.target.signup_email.value, event.target.signup_password.value)
 		.then((result) => {
+			Router.push('/course');
+			if (typeof window !== "undefined") {
+				localStorage.setItem("user", event.target.signup_email.value);
+			}
 			user = result.user;
-			alert("Success Registration!");
 			event.target.username.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email.value = "";
 			event.target.signup_email_confirm.value = "";
+			
 		})
+
 		.catch((error) => console.log(error));
 	}
 
@@ -43,22 +48,21 @@ export default function Page({list, auth}) {
 		console.log(event.target.login_email.value);
 		loginEmail(event.target.login_email.value, event.target.login_password.value)
 		.then((result) => {
-			console.log(result.user);
-			user = result.user;
-			console.log(user);
-			alert("Success Login!");
-			event.target.login_email.value = "";
-			event.target.login_password.value = "";
-			Router.push('/course');
-		})
-		.catch((result) => {
-			console.log("wrong!!!");
-			alert("Wrong! Put correct email and password.");
-			
 			Router.push('/course');
 			if (typeof window !== "undefined") {
 				localStorage.setItem("user", event.target.login_email.value);
 			}
+
+			console.log(result.user);
+			user = result.user;
+			console.log(user);
+			event.target.login_email.value = "";
+			event.target.login_password.value = "";
+			
+		})
+		.catch((error) => {
+			console.log("wrong!!!");
+			alert("Wrong! Put correct email and password.");
 			event.target.login_email.value = "";
 			event.target.login_password.value = "";
 		});
@@ -92,16 +96,19 @@ export default function Page({list, auth}) {
 								<div class="form-group">
 									<input type="text" name="username" id="username" class="form-control input-lg" placeholder="Username"/>
 								</div>
-
+								<br></br>
 								<div class="form-group">
 									<input type="email" name="signup_email" id="signup_email" class="form-control input-lg" placeholder="Email Address"/>
 								</div>
+								<br></br>
 								<div class="form-group">
 									<input type="password" name="signup_password" id="signup_password" class="form-control input-lg" placeholder="Password"/>
 								</div>
-									<div class="form-group">
+								<br></br>
+								<div class="form-group">
 									<input type="password" name="signup_password_confirm" id="signup_password_confirm" class="form-control input-lg" placeholder="Confirm Password"/>
 								</div>
+								<br></br>
 								<div>
 									<button type="submit" class="btn btn-md btn-primary">Register</button>
 								</div>
@@ -116,13 +123,16 @@ export default function Page({list, auth}) {
 					<div class="col-md-5">
 						<form onSubmit={login} name="login_form">
 							<fieldset>							
-								<p class="text-uppercase"> Login </p>	
+								<p class="text-uppercase"> Login </p>
+								<br></br>	
 								<div class="form-group">
 									<input type="email" name="login_email" id="login_email" class="form-control input-lg" placeholder="Email"/>
 								</div>
+								<br></br>
 								<div class="form-group">
 									<input type="password" name="login_password" id="login_password" class="form-control input-lg" placeholder="Password"/>
 								</div>
+								<br></br>
 								<div>
 									<button type="submit" class="btn btn-md btn-primary">Login</button>
 								</div>									
@@ -131,11 +141,6 @@ export default function Page({list, auth}) {
 					</div>
 				</div>
 			</div>
-			{/*
-			<p class="text-center">
-				<small id="passwordHelpInline" class="text-muted"> Developer:<a href="http://www.psau.edu.ph/"> Pampanga state agricultural university ?</a> BS. Information and technology students @2017 Credits: <a href="https://v4-alpha.getbootstrap.com/">boostrap v4.</a></small>
-			</p>
-			*/}
 		</div>
 		<Footer></Footer>
 		</div>

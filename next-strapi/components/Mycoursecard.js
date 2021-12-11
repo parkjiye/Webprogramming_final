@@ -5,15 +5,19 @@ import { url } from '../config/next.config'
 export const Mycoursecard=(props)=>{ // props = (id, title, about, level)
     
     const card=()=>(
+        
         <div className={styles.coursecard} class="row row-cols-1 row-cols-md-3 g-4">
             
             {props.courses.map((element, index)=>{
                 if(typeof window !== "undefined"){
-                    console.log("dfdfdd");
                     var output=localStorage.getItem("course");
+                    console.log(localStorage.getItem("course"));
                     var arr=JSON.parse(output);
-                    console.log(arr[0]);
+                    //console.log(arr[0]);
                     for(var i=0; i<arr.length;i++){
+                        if(arr[i]==null){
+                            continue;
+                        }
                         if(arr[i]==element.title){
                             let name="/webprogramming_banner"+(element.id)+".png"
                             return(

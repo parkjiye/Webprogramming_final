@@ -2,17 +2,21 @@ import styles from '../styles/Home.module.css'
 
 
 export const NavigationBar=(props)=>{
+    const check=()=>{
+        
+    }
     const getusername=()=>{
         let username="";
         let mode="Login / Signup";
         if (typeof window !== "undefined") {
           username=localStorage.getItem("user");
         }
-        if(username!=""){
-            mode="Logout";
+        console.log(username);
+        if(username==undefined){
+            mode="Login / Signup";
         }
         else{
-            mode="Login / Signup";
+            mode="Logout";
         }
         return(
             <div>
@@ -54,6 +58,7 @@ export const NavigationBar=(props)=>{
           
         )
     }
+    
     return(
         getusername()
     );

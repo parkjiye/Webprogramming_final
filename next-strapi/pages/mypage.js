@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.css'
 import { url } from '../config/next.config'
 import Link from "next/link";
 import { fire } from './firebase';
+import Router from 'next/router';
+
 
 import { NavigationBar } from '../components/NavigationBar';
 import { MainBanner } from '../components/MainBanner';
@@ -34,7 +36,9 @@ import { Mycoursecard } from '../components/Mycoursecard';
 export default function Page({courses, titles, lectures}) {
 
   const getusername=()=>{
+    
     let username="";
+    
     if (typeof window !== "undefined") {
       username=localStorage.getItem("user");
     }
@@ -45,10 +49,12 @@ export default function Page({courses, titles, lectures}) {
     )
   }
   fire()
+  
   return (
     <div>
       <Head>
         <title>Home</title>
+        
       </Head>
       <NavigationBar></NavigationBar>
       

@@ -9,8 +9,6 @@
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
 .navigationbar h1{
   font-size: 20px;
   font-family: 'Lobster', cursive;
@@ -25,6 +23,23 @@
   flex-direction: row;
 }
 
+.courselist{
+  text-align: start;
+  padding:10px;
+  font-family: 'Bebas Neue', cursive;
+  
+}
+
+.courselist h5{
+  margin:0;
+  font-size:25px;
+}
+
+.courselist p{
+  margin:0;
+  font-family: 'Fuzzy Bubbles', cursive;
+}
+
 .header{
   padding: 60px;
   text-align: center;
@@ -37,6 +52,19 @@
 .banner{
   width:100%;
   margin-bottom:30px;
+}
+
+.login h2{
+  text-align: start;
+  padding:10px;
+  font-size:35px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.login p{
+  text-align: start;
+  font-size:30px;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .footer {

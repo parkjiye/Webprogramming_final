@@ -9,7 +9,7 @@ import {
     createUserWithEmailAndPassword, //email 회원가입
 } from "firebase/auth";
 
-import { getDatabase, ref, set, child, get } from "firebase/database"
+import { getDatabase, ref, set, child, get, update } from "firebase/database"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,13 +31,42 @@ const auth = getAuth();
 
 //Email 로그인
 export const signupEmail = (email, password) => {
+  if(typeof window !== "undefined"){
+    localStorage.setItem("course", "dfdf");
+  }
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
 //Email 회원가입
 export const loginEmail = (email, password) => {
+  if(typeof window !== "undefined"){
+    localStorage.setItem("course", "dfdf");
+  }
   return signInWithEmailAndPassword(auth, email, password);
 };
+
+export const register=(title)=>{
+  var database=getDatabase(app);
+    //database.ref('test/').set({"name": "테스트2", "intro": "인삿말"})
+  if(typeof window !== "undefined"){
+    var user=localStorage.getItem("user");
+    var result=user.substring(0,user.lastIndexOf("@"));
+    if(localStorage.getItem("course")=="dfdf"){
+      localStorage.removeItem("course");
+      update(ref(database, `users/${result}`),{
+        course: [title],
+      });
+    }
+    else{
+      var arr=JSON.parse(localStorage.getItem("course"));
+      arr[arr.length]=title;
+      //var result2=user.substring(result);
+      update(ref(database, `users/${result}`),{
+      course:arr,
+    });
+    }
+  }
+}
 
 export const fire=()=>{
   var database=getDatabase(app);
@@ -45,10 +74,6 @@ export const fire=()=>{
     if(typeof window !== "undefined"){
       var user=localStorage.getItem("user");
       var result=user.substring(0,user.lastIndexOf("@"));
-      //var result2=user.substring(result);
-      set(ref(database, `users/${result}`),{
-        course:['One Day Python End', 'Unity'],
-      });
       const dbRef=ref(getDatabase());
       get(child(dbRef, `users/${result}`)).then((snapshot)=>{
         if(snapshot.exists()){
