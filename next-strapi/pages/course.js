@@ -19,19 +19,17 @@ export default function Page({courses}) {
       </div>
     )
   }
+
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>Courses</title>
       </Head>
-      
       <NavigationBar></NavigationBar>
-      
       <img className={styles.banner} src="/webprogramming_banner.png"/>
       {getusername()}
       <CourseCard courses={courses}></CourseCard>
       <Footer></Footer>
-
     </div>
   )
 }

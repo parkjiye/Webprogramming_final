@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { url } from '../config/next.config'
-import { fire } from './firebase';
 
 import { NavigationBar } from '../components/NavigationBar';
 import { Footer } from '../components/Footer';
 import { Mycoursecard } from '../components/Mycoursecard';
+import { fire } from './firebase';
 
 export default function Page({courses}) {
   //if the state is login, show "welcome message + user name" on the top of the course card
@@ -27,16 +27,13 @@ export default function Page({courses}) {
   return (
     <div>
       <Head>
-        <title>Home</title>
-        
+        <title>My Page</title>
       </Head>
       <NavigationBar></NavigationBar>
-      
       <img className={styles.banner} src="/webprogramming_banner.png"/>
       {getusername()}
       <Mycoursecard courses={courses}></Mycoursecard>
       <Footer></Footer>
-
     </div>
   )
 }

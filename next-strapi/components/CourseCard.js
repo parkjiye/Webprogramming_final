@@ -11,7 +11,9 @@ export const CourseCard=(props)=>{
                 return(
                     <div class="col">
                         <div class="card h-100">
-                            <Link href={"/course/" + (element.id==undefined?'landing':element.id)}><img src={name} class="card-img-top" alt="..."/></Link>
+                            <Link href={"/course/" + (element.id==undefined?'landing':element.id)}>
+                                <img src={name} class="card-img-top" alt="..."/>
+                            </Link>
                                 <div class="card-body">
                                     <h5>{element.title}</h5>
                                     <p>{element.about}</p>

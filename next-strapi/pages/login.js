@@ -72,7 +72,7 @@ export default function Page({list, auth}) {
 	return (
 		<div>
 		<Head>
-			<title>Home</title>
+			<title>Login/Signup</title>
 		</Head>
 
 		<NavigationBar></NavigationBar>

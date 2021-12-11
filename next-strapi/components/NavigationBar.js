@@ -32,7 +32,7 @@ export const NavigationBar=()=>{
                         <a class="nav-link" href="/login">{mode}</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/course" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="/course">
                         Courses
                         </a>
                     </li>
