@@ -75,6 +75,7 @@ export default function Home({ courses, course, titles }) {
     e.preventDefault()
     var link=course.title;
     register(link);
+    Router.reload();
     Router.push('/mypage');
     
    };

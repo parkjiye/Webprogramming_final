@@ -29,7 +29,7 @@ export default function Page({courses, titles, lectures}) {
       
       <NavigationBar></NavigationBar>
       
-      <img className={styles.banner} src="/webprogramming_banner4.png"/>
+      <img className={styles.banner} src="/webprogramming_banner.png"/>
       {getusername()}
       <CourseCard courses={courses}></CourseCard>
       <Footer></Footer>
