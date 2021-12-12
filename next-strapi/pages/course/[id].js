@@ -53,8 +53,6 @@ export default function Home({ course }) {
       }
       //if it is not an initial value, parse the JSON value to array
       var arr=JSON.parse(output);
-
-      if(arr)
       
       for(var i=0; i<arr.length;i++){
         if(arr[i]==null){
