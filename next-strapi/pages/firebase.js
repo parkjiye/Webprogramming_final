@@ -63,6 +63,7 @@ export const register=(title)=>{
       update(ref(database, `users/${result}`),{
         course: [title],
       });
+      fire();
     }
     //if the course local storage is not initial state, update the course list with new course on the firebase
     else{
@@ -71,6 +72,7 @@ export const register=(title)=>{
       update(ref(database, `users/${result}`),{
       course:arr,
     });
+    fire();
     }
   }
 }
